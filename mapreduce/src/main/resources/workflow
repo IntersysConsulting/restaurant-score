@@ -1,0 +1,27 @@
+digraph G { 
+rankdir=LR;
+node [style=filled, fillcolor=plum1 ,shape=rectangle, fontsize=20, color=black];
+edge [fontsize=10, color=green4, fontcolor=green4];
+
+Legalese [style=filled, fillcolor=floralwhite ,fontsize=20,color=black,label="Restaurant|(c) 2014 Intersys", shape=record];
+
+"job.score.TipBucket" [style=filled, fillcolor=mintcream ,fontsize=12,color=forestgreen,label="Flow: score|Job: TipBucket|{{<ExtractTip>ExtractTip}|{Key: Card\l|cardNumber\r|Value: Tip\l|restaurantID\r|checkAmount\r|tipAmount\r}|{<BucketTip>BucketTip}}", shape=Mrecord];
+"job.score.LoadTransactions" [style=filled, fillcolor=mintcream ,fontsize=12,color=forestgreen,label="Flow: score|Job: LoadTransactions|{{<ReadScores>ReadScores}|{Key: Restaurant\l|id\r|Value: Score\l|restaurantID\r|tipBucket\r}|{<ScoresRestaurant>ScoresRestaurant}}", shape=Mrecord];
+
+"dataloc.Transactions" [style=filled, fillcolor=mintcream ,fontsize=12,color=black, fillcolor=lavender,label="Data Loc: Transactions|Local Text Files", shape=record];
+"dataloc.ScoredTransactions" [style=filled, fillcolor=mintcream ,fontsize=12,color=black, fillcolor=lavender,label="Data Loc: ScoredTransactions|HDFS Seq. Files|Key: Card\l|cardNumber\r|Value: Score\l|restaurantID\r|tipBucket\r", shape=record];
+"dataloc.RestaurantScores" [style=filled, fillcolor=mintcream ,fontsize=12,color=black, fillcolor=lavender,label="Data Loc: RestaurantScores|Local Text Files", shape=record];
+
+"dataloc.Transactions" -> "job.score.TipBucket":ExtractTip  [penwidth=10, color=forestgreen];
+"dataloc.ScoredTransactions" -> "job.score.LoadTransactions":ReadScores  [penwidth=10, color=forestgreen];
+
+"job.score.TipBucket":BucketTip -> "dataloc.ScoredTransactions"  [penwidth=10, color=forestgreen];
+"job.score.LoadTransactions":ScoresRestaurant -> "dataloc.RestaurantScores"  [penwidth=10, color=forestgreen];
+
+
+
+}
+
+
+
+ 

@@ -1,0 +1,4 @@
+type=command
+dependencies= TipBucket
+command=hadoop jar card.tips-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.intersys.score.LoadTransactions.LoadTransactionsJob  "file:///home/chrisgerken/ScoredTransactions/") "file:///home/chrisgerken/workspaces/"	
+ 
