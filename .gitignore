@@ -1,0 +1,11 @@
+mapreduce/target/**
+mapreduce/.classpath
+mapreduce/.project
+mapreduce/.zedstate
+mapreduce/.settings/**
+restaurant-score-simple/target/**
+restaurant-score-simple/*.txt
+restaurant-score-simple/.classpath
+restaurant-score-simple/.project
+restaurant-score-simple/.zedstate
+restaurant-score-simple/.settings/**
